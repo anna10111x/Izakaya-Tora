@@ -1,1 +1,32 @@
+package restaurant1;
+
+/**
+ *
+ * @author vanesa
+ */
+public class User {
+    private int id;
+    private String email;
+    private String name;
+
+    public User(int id, String email, String name) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
+
+    User(int aInt, String email, String password, String string, String string0, String string1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int getId() {
+        return id;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getName() {
+        return name;
+    }
+}
 
