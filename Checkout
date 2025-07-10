@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-/**
- *
- * @author vanesa
- */
+
 public class Checkout extends javax.swing.JFrame {
     private JTextField cardNumberField, expiryField, cvvField;
 
