@@ -1,0 +1,13 @@
+public class Register extends javax.swing.JFrame {
+public Register() {
+        initComponents();
+    }
+Menu M = new Menu();
+m.setVisibile(true); // this is for connecting the menu with the register so it shows up after the customer registers
+this.dispose(); //this is so that when going to the next frame the one before it closes this is good for saving memory
+public static void main(String args[]) {
+        
+        java.awt.EventQueue.invokeLater(() -> { // this tells Java to wait until the right moment to run some code
+            new Register().setVisible(true); //This is a lambda expression it says create a new Register window and make it visible 
+        }); // lambda method is  short form of writing a method
+    }
