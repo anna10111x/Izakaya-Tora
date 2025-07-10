@@ -1,0 +1,56 @@
+package restaurant1;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Receipt extends JFrame {
+    
+    public Receipt() {
+        setupUI();
+    }
+    
+    private void setupUI() {
+        setTitle("Digital Receipt - Izakaya Tora");
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null); // Center window
+        
+        // Main components
+        JTextArea receiptText = new JTextArea(generateReceipt());
+        receiptText.setEditable(false);
+        receiptText.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        
+        JCheckBox cutleryBox = new JCheckBox("Include Cutlery", true);
+        JButton closeBtn = new JButton("Close");
+        
+        // Layout
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        panel.add(new JScrollPane(receiptText), BorderLayout.CENTER);
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        bottomPanel.add(cutleryBox);
+        bottomPanel.add(closeBtn);
+        panel.add(bottomPanel, BorderLayout.SOUTH);
+        
+        // Close action
+        closeBtn.addActionListener(e -> dispose());
+        
+        add(panel);
+    }
+    
+    private String generateReceipt() {
+        return """
+               IZAKAYA TORA
+               ========================
+               ORDER SUMMARY:
+               
+               1x Miso Kabsa (Small)    AED 29.00
+               2x TL Quzi (Big)      AED 39.00
+               ------------------------
+               TOTAL:           AED 214.00
+               
+               Thank you for your order!
+               """;
+    }
+}
