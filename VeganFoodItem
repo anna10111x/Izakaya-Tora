@@ -1,13 +1,1 @@
-package restaurant1;
 
-
-public class VeganFoodItem extends FoodItem {
-    public VeganFoodItem(int id, String name, int quantity, int price, String portion){
-       super(id, name, quantity, price,portion);
-   }
-   @Override
-   public String getCategory(){
-       return "Vegan";
-   }
-    
-}
