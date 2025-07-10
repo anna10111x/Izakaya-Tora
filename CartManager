@@ -1,0 +1,39 @@
+package restaurant1;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class CartManager {
+    private final List<FoodItem> cart = new ArrayList<>();
+
+    public void addItem(FoodItem item) {
+        cart.add(item);
+    }
+
+    public boolean removeItemById(int id) {
+        Iterator<FoodItem> it = cart.iterator();
+        while (it.hasNext()) {
+            FoodItem item = it.next();
+            if (item.getId() == id) {
+                it.remove();
+                return true;
+            }
+        }
+        return false;
+    }
+public int getTotal() {
+        int total = 0;
+        for (FoodItem item : cart) {
+            total += item.getPrice() * item.getQuantity();
+        }
+        return total;
+    }
+
+    public List<FoodItem> getCartItems() {
+        return new ArrayList<>(cart);
+    }
+
+    public void clearCart() {
+        cart.clear();
+    }
+}
