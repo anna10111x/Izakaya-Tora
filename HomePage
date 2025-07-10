@@ -1,1 +1,91 @@
+package restaurant1;
 
+
+public class HomeFame extends javax.swing.JFrame {
+
+    
+    public HomeFame() {
+        initComponents();
+    }
+
+   
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 96, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 1123, 96, -1));
+
+        jButton1.setBackground(new java.awt.Color(250, 250, 250));
+        jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 11)); // NOI18N
+        jButton1.setText("Order Now");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 500, 310, 40));
+
+        jButton2.setBackground(new java.awt.Color(250, 250, 250));
+        jButton2.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 11)); // NOI18N
+        jButton2.setText("About Us");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 560, 310, 40));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("至高の味");
+getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 80, 30));
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Light", 3, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Izakaya Tora");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 350, 80));
+
+        jLabel2.setFont(new java.awt.Font("Malgun Gothic", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RamenFeatured-1.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setMaximumSize(new java.awt.Dimension(1700, 1000));
+        jLabel2.setPreferredSize(new java.awt.Dimension(1200, 1079));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -250, 1420, 1030));
+
+        pack();
+ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        Register R = new Register();
+        R.setVisible(true);
+        this.dispose();
+        public static void main(String args[]) {
+      
+        
+        
+        java.awt.EventQueue.invokeLater(() -> {
+            new HomeFame().setVisible(true);
+        });
+    }
+       
