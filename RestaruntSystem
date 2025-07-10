@@ -1,0 +1,129 @@
+package restaurant1;
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+// 1. CartItem Class 
+class CartItem {
+    private final String name;
+    private final double price;
+    private int quantity;
+
+    public CartItem(String name, double price) {
+        this.name = name;
+        this.price = price;
+        this.quantity = 1;
+    }
+
+    // Getters and increment methods
+    public String getName() { return name; }
+    public double getPrice() { return price; }
+    public int getQuantity() { return quantity; }
+    public void incrementQuantity() { quantity++; }
+    public void decrementQuantity() { if(quantity > 0) quantity--; }
+    public double getTotal() { return price * quantity; }
+}
+
+// 2. Cart Management Class
+class Cart {
+    private ArrayList<CartItem> items = new ArrayList<>();
+
+    public void addItem(CartItem newItem) {
+        for (CartItem item : items) {
+            if (item.getName().equals(newItem.getName())) {
+                item.incrementQuantity();
+                return;
+            }
+        }
+        items.add(newItem);
+    }
+
+    public ArrayList<CartItem> getItems() { return items; }
+    public double getSubtotal() {
+        return items.stream().mapToDouble(CartItem::getTotal).sum();
+    }
+}
+
+// 3. Main GUI Class
+public class RestaurantSystem extends JFrame {
+    private final Cart cart = new Cart();
+    private final JPanel billingPanel;
+
+    public RestaurantSystem() {
+        setTitle("Japanese Restaurant - Non-Halal Menu");
+        setLayout(new BorderLayout(10, 10));
+        
+        // Menu Panel (Left)
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        menuPanel.setBorder(BorderFactory.createTitledBorder("Non-Halal Menu"));
+        
+        // Add Non-Halal Items
+        addMenuItem(menuPanel, "Bacon Yakitori Skewers", 28.0);
+        addMenuItem(menuPanel, "Osaka Pork Katsu Curry", 35.0);
+        addMenuItem(menuPanel, "Sizzling Pork Gyoza", 30.0);
+        addMenuItem(menuPanel, "Su Donburi", 30.0);
+        addMenuItem(menuPanel, "Hakata Ramen", 30.0);
+        
+        // Billing Panel (Right)
+        billingPanel = new JPanel();
+        billingPanel.setLayout(new BoxLayout(billingPanel, BoxLayout.Y_AXIS));
+        billingPanel.setBorder(BorderFactory.createTitledBorder("Your Order"));
+        
+        add(menuPanel, BorderLayout.WEST);
+        add(new JScrollPane(billingPanel), BorderLayout.EAST);
+        
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void addMenuItem(JPanel panel, String name, double price) {
+        JPanel itemPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        itemPanel.setMaximumSize(new Dimension(350, 60));
+        
+        JLabel nameLabel = new JLabel(name + " - AED " + price);
+        JButton addButton = new JButton("Add");
+        
+        addButton.addActionListener(e -> {
+            cart.addItem(new CartItem(name, price));
+            updateBillingPanel();
+        });
+      itemPanel.add(minusBtn);
+            itemPanel.add(quantityLabel);
+            itemPanel.add(plusBtn);
+            itemPanel.add(new JLabel(item.getName()));
+            itemPanel.add(Box.createHorizontalGlue());
+            itemPanel.add(new JLabel(String.format("AED %.2f", item.getTotal())));
+            
+            billingPanel.add(itemPanel);
+        }
+        
+        // Subtotal
+        billingPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        JLabel subtotalLabel = new JLabel("Subtotal: AED " + String.format("%.2f", cart.getSubtotal()));
+        subtotalLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        billingPanel.add(subtotalLabel);
+        
+        // Checkout Button
+        JButton checkoutBtn = new JButton("Checkout");
+        checkoutBtn.addActionListener(e -> {
+            JOptionPane.showMessageDialog(this, "Order placed! Total: AED " + cart.getSubtotal());
+            cart.getItems().clear();
+            updateBillingPanel();
+        });
+        billingPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        billingPanel.add(checkoutBtn);
+        
+        billingPanel.revalidate();
+        billingPanel.repaint();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new RestaurantSystem().setVisible(true);
+        });
+    }
+}
