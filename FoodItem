@@ -1,1 +1,82 @@
+package restaurant1;
 
+public class FoodItem {
+    private int id;
+    private String name;
+    private int quantity;
+    private int price;
+    private String portion;
+    
+    
+
+    public FoodItem(int id, String name, int quantity, int price, String portion){
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.portion = portion;
+  
+    }
+
+    public int getTotalPrice(){
+        return price*quantity;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+    public String getPortion() { 
+        return portion; 
+    }
+    public void setPortion(String portion){
+        this.portion = portion;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price){
+        this.price = price;
+    }
+
+    public String getCategory(){
+        return "General";
+    }
+    
+
+    @Override
+   
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        FoodItem other = (FoodItem) obj;
+        return id == other.id && portion.equals(other.portion);
+}
+
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
+}
